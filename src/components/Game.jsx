@@ -5,6 +5,7 @@ import IconRock from "../assets/images/icon-rock.svg";
 import IconScissor from "../assets/images/icon-scissors.svg";
 import GameBoard from "./GameBoard";
 import PopUp from "./PopUp";
+import GamePlay from "./GamePlay";
 
 const Game = () => {
   const [playerPicked, setPlayerPicked] = React.useState(null);
@@ -26,7 +27,14 @@ const Game = () => {
 
   return (
     <div className="game">
-      <GameBoard cardArr={cardArr} onHandlePlayerPicked={handlePlayerPicked} />
+      {playerPicked ? (
+        <GamePlay playerPicked={playerPicked} />
+      ) : (
+        <GameBoard
+          cardArr={cardArr}
+          onHandlePlayerPicked={handlePlayerPicked}
+        />
+      )}
       <PopUp active={isPopUpOpen} onHandlePopUp={handlePopUp} />
       <Overlay active={isPopUpOpen} />
     </div>

@@ -118,3 +118,81 @@
 .overlay.active {
   display: block;
 }
+
+.game-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.game-play h2 {
+  color: #eee;
+  text-align: center;
+  margin-block: 50px;
+  font-weight: 600;
+}
+
+.game-play .big-circle,
+.game-play .big-circle__transform {
+  width: 15rem;
+  height: 15rem;
+}
+
+.game-play .small-circle,
+.game-play .small-circle__transform {
+  width: 12rem;
+  height: 12rem;
+}
+
+.play-again {
+  text-align: center;
+}
+
+.play-again h1 {
+  color: #eee;
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.btn-play {
+  color: red;
+  padding-block: 10px;
+  padding-inline: 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.temp-circle {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.temp-circle-small {
+  background: hsl(229, 25%, 31%);
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.player-pick,
+.house-pick {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
