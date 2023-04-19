@@ -1,25 +1,13 @@
 import React from "react";
 import Card from "./Card";
+import ConcentricCircle from "./ConcentricCircle";
 
-const HouseCard = ({ playerPicked, tempArr }) => {
-  let [housePicked, setHousePicked] = React.useState(null);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHousePicked(getRandomCard());
-    }, 750);
-  }, [tempArr.current]);
-
-  const getRandomCard = () => {
-    const randomIndex = Math.floor(Math.random() * tempArr.current.length);
-
-    return tempArr.current[randomIndex];
-  };
-
+const HouseCard = ({ playerPicked, housePicked, circle }) => {
   return (
     <div className="house">
       <h2>HOUSE PICKED</h2>
       <div className="house-pick">
+        {circle && <ConcentricCircle />}
         {housePicked ? (
           <Card
             playerPicked={playerPicked}
