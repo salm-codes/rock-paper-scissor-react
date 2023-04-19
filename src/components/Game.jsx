@@ -10,6 +10,7 @@ import GamePlay from "./GamePlay";
 const Game = () => {
   const [playerPicked, setPlayerPicked] = React.useState(null);
   const [isPopUpOpen, setPopUpOpen] = React.useState(false);
+  const tempArr = React.useRef([]);
 
   const cardArr = [
     { id: 0, name: "paper", color: "blue", icon: IconPaper },
@@ -19,6 +20,9 @@ const Game = () => {
 
   const handlePlayerPicked = (index) => {
     setPlayerPicked(cardArr[index]);
+    tempArr.current = cardArr.filter(
+      (card) => card.name !== cardArr[index].name
+    );
   };
 
   const handlePopUp = () => {
@@ -28,7 +32,7 @@ const Game = () => {
   return (
     <div className="game">
       {playerPicked ? (
-        <GamePlay playerPicked={playerPicked} />
+        <GamePlay playerPicked={playerPicked} tempArr={tempArr} />
       ) : (
         <GameBoard
           cardArr={cardArr}
