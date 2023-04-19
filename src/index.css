@@ -25,3 +25,8 @@ header {
   justify-content: center;
   align-items: center;
 }
+
+main {
+  height: 75%;
+  position: relative;
+}
