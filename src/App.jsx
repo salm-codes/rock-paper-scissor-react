@@ -1,7 +1,16 @@
-import "./App.css";
+import React from "react";
+import ScoreBoard from "./components/ScoreBoard";
 
 function App() {
-  return <h1>Hello World</h1>;
+  const [score, setScore] = React.useState(0);
+
+  return (
+    <div className="app">
+      <header>
+        <ScoreBoard score={score} />
+      </header>
+    </div>
+  );
 }
 
 export default App;
