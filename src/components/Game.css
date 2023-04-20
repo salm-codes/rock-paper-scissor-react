@@ -268,3 +268,242 @@
     height: 30rem;
   }
 }
+
+@media (max-width: 768px) {
+  /* Game */
+  .big-circle,
+  .big-circle__transform {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .small-circle,
+  .small-circle__transform {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .paper-circle {
+    top: 25px;
+    left: 20px;
+  }
+
+  .scissor-circle {
+    top: 25px;
+    right: 20px;
+  }
+
+  .rock-circle {
+    bottom: 60px;
+  }
+
+  .player,
+  .house {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .game-play .big-circle,
+  .game-play .big-circle__transform {
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .game-play .small-circle,
+  .game-play .small-circle__transform {
+    width: 8.5rem;
+    height: 8.5rem;
+  }
+
+  .temp-circle {
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .temp-circle-small {
+    width: 8.5rem;
+    height: 8.5rem;
+  }
+
+  .game-play {
+    gap: 10%;
+  }
+
+  .play-again-mobile {
+    display: block;
+  }
+
+  .play-again h1 {
+    text-align: center;
+    color: #eee;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+
+  .play-again button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .circle-1 {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .circle-2 {
+    width: 19rem;
+    height: 19rem;
+  }
+
+  .circle-3 {
+    width: 23rem;
+    height: 23rem;
+  }
+
+  @keyframes Growing1 {
+    0% {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    50% {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    100% {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+
+  @keyframes Growing2 {
+    0% {
+      width: 11rem;
+      height: 11rem;
+    }
+
+    50% {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    100% {
+      width: 19rem;
+      height: 19rem;
+    }
+  }
+
+  @keyframes Growing3 {
+    0% {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    50% {
+      width: 19rem;
+      height: 19rem;
+    }
+
+    100% {
+      width: 23rem;
+      height: 23rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .circle-1 {
+    width: 11.5rem;
+    height: 11.5rem;
+  }
+
+  .circle-2 {
+    width: 14.5rem;
+    height: 14.5rem;
+  }
+
+  .circle-3 {
+    width: 17.5rem;
+    height: 17.5rem;
+  }
+}
+
+@media (max-width: 440px) {
+  /* Game */
+
+  .game-play > img {
+    width: 300px;
+  }
+
+  .big-circle,
+  .big-circle__transform {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .small-circle,
+  .small-circle__transform {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .paper-circle {
+    top: 35px;
+    left: 5px;
+  }
+
+  .scissor-circle {
+    top: 35px;
+    right: 5px;
+  }
+
+  .rock-circle {
+    bottom: 80px;
+  }
+
+  .game-play h2 {
+    font-size: 18px;
+  }
+
+  .game-play .big-circle,
+  .game-play .big-circle__transform {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .game-play .small-circle,
+  .game-play .small-circle__transform {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .temp-circle {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .temp-circle-small {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .play-again h1 {
+    font-size: 2rem;
+  }
+
+  .circle-1 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .circle-2 {
+    width: 10.5rem;
+    height: 10.5rem;
+  }
+
+  .circle-3 {
+    width: 13.5rem;
+    height: 13.5rem;
+  }
+}

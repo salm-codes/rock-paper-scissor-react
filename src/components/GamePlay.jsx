@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PlayerCard from "./PlayerCard";
 import HouseCard from "./HouseCard";
 import "./Game.css";
@@ -11,6 +11,7 @@ import { CountContext } from "../App";
 const GamePlay = ({ tempArr, playerPicked, playerPickedNull }) => {
   const [housePicked, setHousePicked] = React.useState(null);
   const [result, setResult] = React.useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const { score, setScore } = React.useContext(CountContext);
 
   React.useEffect(() => {
@@ -33,6 +34,18 @@ const GamePlay = ({ tempArr, playerPicked, playerPickedNull }) => {
       return () => clearInterval(houseTimer);
     }
   }, [housePicked]);
+
+  React.useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const housePick = () => {
     new Audio(bubble).play();
@@ -86,7 +99,7 @@ const GamePlay = ({ tempArr, playerPicked, playerPickedNull }) => {
           playerPicked={playerPicked}
           circle={result === "WIN" && true}
         />
-        {result !== null && (
+        {result !== null && !isMobile && (
           <PlayAgain
             result={result}
             playerPickedNull={playerPickedNull}
@@ -101,6 +114,14 @@ const GamePlay = ({ tempArr, playerPicked, playerPickedNull }) => {
           circle={result === "LOSE" && true}
         />
       </div>
+      {result !== null && isMobile && (
+        <PlayAgain
+          result={result}
+          playerPickedNull={playerPickedNull}
+          housePickedNull={setHousePicked}
+          resultNull={setResult}
+        />
+      )}
     </div>
   );
 };

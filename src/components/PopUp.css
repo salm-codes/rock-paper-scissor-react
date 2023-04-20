@@ -49,3 +49,37 @@
 .close-icon {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  /* Rules */
+  .btn {
+    max-width: fit-content;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .rules-content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100vw;
+    height: 100vh;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    clip-path: circle(0 at 50% 50%);
+    transition: all 0.5s ease-out;
+    z-index: 99;
+  }
+
+  .rules-content-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

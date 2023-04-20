@@ -25,3 +25,29 @@
   text-align: center;
   color: hsl(229, 25%, 31%);
 }
+
+@media (max-width: 768px) {
+  /* header */
+  .scoreboard {
+    padding: 10px;
+    width: 60%;
+  }
+
+  .scoreboard img {
+    width: 99px;
+  }
+
+  .score-card {
+    padding: 5px 15px;
+  }
+
+  .score-points {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .scoreboard {
+    width: 80%;
+  }
+}
