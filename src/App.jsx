@@ -2,6 +2,8 @@ import React from "react";
 import ScoreBoard from "./components/ScoreBoard";
 import Game from "./components/Game";
 
+export const CountContext = React.createContext();
+
 function App() {
   const [score, setScore] = React.useState(0);
 
@@ -10,9 +12,11 @@ function App() {
       <header>
         <ScoreBoard score={score} />
       </header>
-      <main>
-        <Game />
-      </main>
+      <CountContext.Provider value={{ score, setScore }}>
+        <main>
+          <Game />
+        </main>
+      </CountContext.Provider>
     </div>
   );
 }

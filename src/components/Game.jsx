@@ -25,6 +25,10 @@ const Game = () => {
     );
   };
 
+  const handlePlayerPickedToNull = () => {
+    setPlayerPicked(null);
+  };
+
   const handlePopUp = () => {
     setPopUpOpen((prevState) => !prevState);
   };
@@ -32,7 +36,11 @@ const Game = () => {
   return (
     <div className="game">
       {playerPicked ? (
-        <GamePlay playerPicked={playerPicked} tempArr={tempArr} />
+        <GamePlay
+          playerPicked={playerPicked}
+          tempArr={tempArr}
+          playerPickedNull={handlePlayerPickedToNull}
+        />
       ) : (
         <GameBoard
           cardArr={cardArr}

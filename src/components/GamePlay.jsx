@@ -5,16 +5,19 @@ import "./Game.css";
 import bubble from "../assets/sounds/mixkit-water-bubble-1317.wav";
 import winning from "../assets/sounds/mixkit-winning-notification-2018.wav";
 import losing from "../assets/sounds/mixkit-losing-bleeps-2026.wav";
+import PlayAgain from "./PlayAgain";
+import { CountContext } from "../App";
 
-const GamePlay = ({ tempArr, playerPicked }) => {
+const GamePlay = ({ tempArr, playerPicked, playerPickedNull }) => {
   const [housePicked, setHousePicked] = React.useState(null);
   const [result, setResult] = React.useState(null);
+  const { score, setScore } = React.useContext(CountContext);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setHousePicked(getRandomCard());
       housePick();
-    }, 900);
+    }, 750);
 
     return () => {
       clearTimeout(timer);
@@ -25,7 +28,7 @@ const GamePlay = ({ tempArr, playerPicked }) => {
     if (housePicked !== null) {
       const houseTimer = setTimeout(() => {
         handleResult(playerPicked, housePicked);
-      }, 1000);
+      }, 750);
 
       return () => clearInterval(houseTimer);
     }
@@ -43,6 +46,14 @@ const GamePlay = ({ tempArr, playerPicked }) => {
     new Audio(losing).play();
   };
 
+  const handleScore = (value) => {
+    if (value === "WIN") {
+      setScore(score + 1);
+    } else {
+      setScore(score - 1);
+    }
+  };
+
   const handleResult = (playerPicked, housePicked) => {
     let pid = playerPicked.id;
     let hid = housePicked.id;
@@ -53,9 +64,11 @@ const GamePlay = ({ tempArr, playerPicked }) => {
       (pid === 2 && hid === 0)
     ) {
       setResult("WIN");
+      handleScore("WIN");
       gameWon();
     } else {
       setResult("LOSE");
+      handleScore("LOSE");
       gameLost();
     }
   };
@@ -73,7 +86,14 @@ const GamePlay = ({ tempArr, playerPicked }) => {
           playerPicked={playerPicked}
           circle={result === "WIN" && true}
         />
-        {result !== null && <PlayAgain result={result} />}
+        {result !== null && (
+          <PlayAgain
+            result={result}
+            playerPickedNull={playerPickedNull}
+            housePickedNull={setHousePicked}
+            resultNull={setResult}
+          />
+        )}
         <HouseCard
           playerPicked={playerPicked}
           housePicked={housePicked}
@@ -81,15 +101,6 @@ const GamePlay = ({ tempArr, playerPicked }) => {
           circle={result === "LOSE" && true}
         />
       </div>
-    </div>
-  );
-};
-
-const PlayAgain = ({ result }) => {
-  return (
-    <div className="play-again">
-      <h1 className="result">{`YOU ${result}`}</h1>
-      <button className="btn-play">PLAY AGAIN</button>
     </div>
   );
 };
