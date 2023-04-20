@@ -2,6 +2,9 @@ import React from "react";
 import PlayerCard from "./PlayerCard";
 import HouseCard from "./HouseCard";
 import "./Game.css";
+import bubble from "../assets/sounds/mixkit-water-bubble-1317.wav";
+import winning from "../assets/sounds/mixkit-winning-notification-2018.wav";
+import losing from "../assets/sounds/mixkit-losing-bleeps-2026.wav";
 
 const GamePlay = ({ tempArr, playerPicked }) => {
   const [housePicked, setHousePicked] = React.useState(null);
@@ -10,7 +13,8 @@ const GamePlay = ({ tempArr, playerPicked }) => {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setHousePicked(getRandomCard());
-    }, 750);
+      housePick();
+    }, 900);
 
     return () => {
       clearTimeout(timer);
@@ -19,11 +23,25 @@ const GamePlay = ({ tempArr, playerPicked }) => {
 
   React.useEffect(() => {
     if (housePicked !== null) {
-      setTimeout(() => {
+      const houseTimer = setTimeout(() => {
         handleResult(playerPicked, housePicked);
       }, 1000);
+
+      return () => clearInterval(houseTimer);
     }
   }, [housePicked]);
+
+  const housePick = () => {
+    new Audio(bubble).play();
+  };
+
+  const gameWon = () => {
+    new Audio(winning).play();
+  };
+
+  const gameLost = () => {
+    new Audio(losing).play();
+  };
 
   const handleResult = (playerPicked, housePicked) => {
     let pid = playerPicked.id;
@@ -35,8 +53,10 @@ const GamePlay = ({ tempArr, playerPicked }) => {
       (pid === 2 && hid === 0)
     ) {
       setResult("WIN");
+      gameWon();
     } else {
       setResult("LOSE");
+      gameLost();
     }
   };
 

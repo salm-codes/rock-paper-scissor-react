@@ -1,4 +1,5 @@
 import React from "react";
+import ballTap from "../assets/sounds/mixkit-game-ball-tap-2073.wav";
 
 const Card = ({
   name,
@@ -8,9 +9,14 @@ const Card = ({
   playerPicked,
   onHandlePlayerPicked,
 }) => {
+  const pick = () => {
+    new Audio(ballTap).play();
+  };
   const handleClick = (e) => {
+    pick();
     onHandlePlayerPicked(e.currentTarget.dataset.id);
   };
+
   return (
     <div className={playerPicked ? "" : `${name}-circle`}>
       <div
