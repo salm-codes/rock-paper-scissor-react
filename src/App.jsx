@@ -9,13 +9,9 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <ScoreBoard score={score} />
-      </header>
+      <ScoreBoard score={score} />
       <CountContext.Provider value={{ score, setScore }}>
-        <main>
-          <Game />
-        </main>
+        <Game />
       </CountContext.Provider>
     </div>
   );

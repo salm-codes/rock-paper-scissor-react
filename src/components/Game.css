@@ -165,6 +165,10 @@
   border: none;
 }
 
+.btn-play:hover {
+  transform: translate(1px, 1px);
+}
+
 .temp-circle {
   height: 15rem;
   width: 15rem;
@@ -187,6 +191,21 @@
 .player-pick,
 .house-pick {
   position: relative;
+}
+.player-pick {
+  animation: from-bottom 1s ease;
+}
+
+@keyframes from-bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .circle {

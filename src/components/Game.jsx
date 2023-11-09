@@ -34,22 +34,24 @@ const Game = () => {
   };
 
   return (
-    <div className="game">
-      {playerPicked ? (
-        <GamePlay
-          playerPicked={playerPicked}
-          tempArr={tempArr}
-          playerPickedNull={handlePlayerPickedToNull}
-        />
-      ) : (
-        <GameBoard
-          cardArr={cardArr}
-          onHandlePlayerPicked={handlePlayerPicked}
-        />
-      )}
-      <PopUp active={isPopUpOpen} onHandlePopUp={handlePopUp} />
-      <Overlay active={isPopUpOpen} />
-    </div>
+    <main>
+      <div className="game">
+        {playerPicked ? (
+          <GamePlay
+            playerPicked={playerPicked}
+            tempArr={tempArr}
+            playerPickedNull={handlePlayerPickedToNull}
+          />
+        ) : (
+          <GameBoard
+            cardArr={cardArr}
+            onHandlePlayerPicked={handlePlayerPicked}
+          />
+        )}
+        <PopUp active={isPopUpOpen} onHandlePopUp={handlePopUp} />
+        <Overlay active={isPopUpOpen} />
+      </div>
+    </main>
   );
 };
 
